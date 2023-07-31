@@ -56,10 +56,14 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ZombiesWavesScript.cs" />
     <Compile Include="Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
-    <Compile Include="Assets\Scripts\ZombiScript.cs" />
+    <Compile Include="Assets\Scripts\ZombieScript.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealthScript.cs" />
     <Compile Include="Assets\Scripts\GunScript.cs" />
+    <Compile Include="Assets\Scripts\AmmoBox.cs" />
+    <Compile Include="Assets\Scripts\SpawnZombiesScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
