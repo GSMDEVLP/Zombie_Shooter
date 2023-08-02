@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunScript : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class GunScript : MonoBehaviour
     [SerializeField] private ParticleSystem _shootEffect;
     [SerializeField] private ParticleSystem _hitEffect;
     [SerializeField] private AudioSource _shootAudio;
+    [SerializeField] private Text _textInfoAmmo;
+    
+
     public Camera Camera;
     private float _damage = 10f;
     private int _zombieDamage = 50;
@@ -28,8 +32,10 @@ public class GunScript : MonoBehaviour
         StartCoroutine(Reload());
     }
 
+
     void Update()
     {
+        GunUI();
         if (isReloading)
             return;
 
@@ -44,6 +50,7 @@ public class GunScript : MonoBehaviour
             Shoot();
             _nextTimeToFire = Time.time + _fireRate;
         }
+        
     }
 
     IEnumerator Reload()
@@ -60,6 +67,10 @@ public class GunScript : MonoBehaviour
         
     }
 
+    void GunUI()
+    {
+        _textInfoAmmo.text = CurrentAmmo.ToString() + " \\/ " + BagAmmo.ToString();
+    }
     void Shoot()
     {        
         CurrentAmmo--;
