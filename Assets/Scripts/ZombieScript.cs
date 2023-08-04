@@ -9,6 +9,7 @@ public class ZombieScript : MonoBehaviour
     [SerializeField] private GameObject _ammoBox;
     public float ZombieSpeed = 0.5f;
     private int _health = 100;
+    public int Damage = 10;
 
     [SerializeField] private List<Rigidbody> _listRigidbodies = new List<Rigidbody>();
 
@@ -23,7 +24,8 @@ public class ZombieScript : MonoBehaviour
         _zombieAnimator = gameObject.GetComponent<Animator>();
         RigidbodyIsKinematicOn();
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
-        _health = 100;
+        _health += _zombiesWavesScript.ZombieHealthAdding;
+        Damage += _zombiesWavesScript.ZombieDamageAdding;
         ZombieSpeed = 0.5f;
     }
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class ZombieScript : MonoBehaviour
         {
             _zombieAnimator.SetBool("Attack", true);
 
-            collision.gameObject.GetComponent<PlayerHealthScript>().TakePlayerDamage(10);
+            collision.gameObject.GetComponent<PlayerHealthScript>().TakePlayerDamage(Damage);
         }
     }
 
@@ -94,7 +96,7 @@ public class ZombieScript : MonoBehaviour
         _health -= damage;
         _zombieAnimator.SetTrigger("Hit");
 
-        if (_health<= 0)
+        if (_health <= 0)
         {
             RigidbodyIsKinematicOff();
             gameObject.GetComponent<CapsuleCollider>().enabled = false;

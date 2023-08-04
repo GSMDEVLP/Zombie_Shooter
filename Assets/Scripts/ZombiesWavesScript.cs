@@ -11,6 +11,9 @@ public class ZombiesWavesScript : MonoBehaviour
     public int WavesCount = 1; 
     [SerializeField] private Text _textWaves;
 
+    public int ZombieHealthAdding;
+    public int ZombieDamageAdding;
+
     void Update()
     {
         _textWaves.text = "Waves: " + WavesCount;
@@ -29,6 +32,9 @@ public class ZombiesWavesScript : MonoBehaviour
         _maxZombiesOnWave++;
         _zombieKillsOnWave = 0;
         WavesCount++;
+
+        ZombieHealthAdding += 50;
+        ZombieDamageAdding += 2;
         for (int countZombies = 0; countZombies < _zombiesCount.Length; countZombies++)
         {
             Destroy(_zombiesCount[countZombies].gameObject);

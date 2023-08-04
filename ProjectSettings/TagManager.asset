@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Zombie
   - AmmoBox
+  - NextAnimation
   layers:
   - Default
   - TransparentFX
