@@ -60,7 +60,9 @@
     <Compile Include="Assets\Scripts\Target.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\ZombieScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScriptsUI\ZombieUI.cs" />
     <Compile Include="Assets\Scripts\PlayerHealthScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScriptsUI\GunUI.cs" />
     <Compile Include="Assets\Scripts\GunScript.cs" />
     <Compile Include="Assets\Scripts\AmmoBox.cs" />
     <Compile Include="Assets\Scripts\MenuScriptsUI\PlayerUI.cs" />

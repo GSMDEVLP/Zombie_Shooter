@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class PlayerUI : MonoBehaviour
 {
-    [SerializeField] GameObject _player;
     private Animator _playerAnimator;
     private bool _nextAnim = false;
     private float _speed = 1f;
-    private float mov = 100;
+    private float mov = 50;
+    public ZombieUI _zombieUI;
+
+    public GameObject Gun;
+
 
     void Start()
     {
         _playerAnimator = GetComponent<Animator>();
+        
     }
     void Update()
     {
         if (!_nextAnim)
             MovePLayer();
-        else
+        if(!_zombieUI._aliveZombie)
         {
+            _playerAnimator.SetInteger("Move", 0);
             StartCoroutine(PlayAnimations());
         }
     }
@@ -45,8 +50,9 @@ public class PlayerUI : MonoBehaviour
     private void MovePLayer()
     {
         _playerAnimator.SetInteger("Move", 1);
-        Vector3 movement = new Vector3(0, 0, mov) *_speed * Time.deltaTime;
-        _player.transform.Translate(movement, Space.World);
+        Vector3 movement = new Vector3(0, 0, -mov) * _speed * Time.deltaTime;
+        gameObject.transform.Translate(movement);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,6 +60,7 @@ public class PlayerUI : MonoBehaviour
         if (other.gameObject.tag == "NextAnimation")
         {
             _playerAnimator.SetInteger("Move", 0);
+            Gun.GetComponent<GunUI>().enabled = true;
            _nextAnim = true;            
         }
     }
